@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  &:before {
+    content: "";
+    content: "";
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.text-shadow {
+  text-shadow: 0px 2px 0px rgb(0 0 0 / 30%);
+}
+
+.adjacent-post {
+  & .arrow-btn {
+    transition: width 300ms ease;
+    width: 50px;
+  }
+  &:hover {
+    & .arrow-btn {
+      width: 60px;
+    }
+  }
+}
+
+.react-multi-carousel-list {
+  & .arrow-btn {
+    transition: width 300ms ease;
+    width: 50px;
+    &:hover {
+      width: 60px;
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.link{
+  background-image: linear-gradient(to top, #505285 0%, #585e92 12%, #65689f 25%, #7474b0 37%, #7e7ebb 50%, #8389c7 62%, #9795d4 75%, #a2a1dc 87%, #b5aee4 100%);
+}
+.link:hover{ 
+  background-image: linear-gradient(to top, #505285 100%, #585e92 12%, #65689f 25%, #7474b0 37%, #7e7ebb 50%, #8389c7 62%, #9795d4 75%, #a2a1dc 87%, #b5aee4 0%);
+}
+* {
+  box-sizing: border-box;
+}
