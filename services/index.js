@@ -7,23 +7,25 @@ export const getPosts = async () => {
       postsConnection {
         edges {
           node {
-            createdAt
-            slug
-            title
-            excerpt
-            featuredImage {
-              url
+            author {
+              name
+              photo {
+                url
+              }
+              description
             }
             categories {
               name
               slug
             }
-            author {
-              id
-              name
-              photo {
-                url
-              }
+            createdAt
+            excerpt
+            featuredPost
+            id
+            slug
+            title
+            featuredImage {
+              url
             }
           }
         }
@@ -31,6 +33,6 @@ export const getPosts = async () => {
     }
   `;
   const result = await request(graphqlAPI, query);
-  console.log(result.postsConnection.edges)
+
   return result.postsConnection.edges;
 };

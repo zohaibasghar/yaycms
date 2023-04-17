@@ -1,7 +1,8 @@
-import Posts from "@/components/Posts";
+import PostCard from "@/components/PostCard";
+import { getPosts } from "@/services";
 import Head from "next/head";
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <div>
       <Head>
@@ -9,8 +10,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container">
-        <Posts />
+        <div className="px-4">
+          {posts &&
+            posts.map((post) => {
+              return <PostCard key={post.node.id} post={post.node} />;
+            })}
+        </div>
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+  return {
+    props: { posts },
+  };
 }
