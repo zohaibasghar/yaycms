@@ -10,8 +10,8 @@ const PostCard = ({ post }) => {
         className="mx-auto mt-1 rounded-md object-cover w-full"
         alt={post.title}
         src={post.featuredImage.url}
-        width={400}
-        height={200}
+        width={600}
+        height={400}
       />
       <div className=" flex justify-center my-3 gap-6">
         <div className="flex items-center gap-2">

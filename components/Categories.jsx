@@ -1,15 +1,15 @@
 
+import { getCategories } from "@/services";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Categories = () => {
-  const categories = [
-    { name: "Web Development", slug: "web-development" },
-    { name: "Astronomy", slug: "astronomy" },
-    { name: "Sports", slug: "sports" },
-    { name: "Education", slug: "education" },
-    { name: "Photography", slug: "photography" },
-  ]
+  const [categories, setCategories] = useState([])
+  useEffect(() => {
+    getCategories().then((result=>setCategories(result)))
+  }, [])
+  
+
   return (
     <div className="p-4 bg-slate-50 rounded-md">
       <h3 className="font-bold">Categories</h3>

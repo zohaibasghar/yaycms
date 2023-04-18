@@ -2,7 +2,6 @@ import Categories from "@/components/Categories";
 import Header from "@/components/Header";
 import RecentPosts from "@/components/RecentPosts";
 import "@/styles/globals.scss";
-import "tailwindcss/tailwind.css";
 export default function App({ Component, pageProps }) {
   return (
     <div className="container mx-auto">
