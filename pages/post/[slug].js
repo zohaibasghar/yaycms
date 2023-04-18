@@ -1,5 +1,6 @@
 import Author from "@/components/Author";
 import CommentForm from "@/components/CommentForm";
+import Comments from "@/components/Comments";
 import { getPostDetails, getPosts } from "@/services";
 import moment from "moment";
 import Head from "next/head";
@@ -130,6 +131,7 @@ const PostDetails = ({ post }) => {
 
         <Author author={post.author} />
         <CommentForm slug={post.slug}/>
+        <Comments slug={post.slug}/>
       </>
     )
   );

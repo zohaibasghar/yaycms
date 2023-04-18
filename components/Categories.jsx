@@ -9,7 +9,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="p-4 bg-slate-50 rounded-md">
+    <div className="p-4 mb-8 bg-slate-50 rounded-md">
       <h3 className="font-bold">Categories</h3>
       <div>
         {categories ? (
