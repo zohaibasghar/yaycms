@@ -14,7 +14,7 @@ const CommentForm = ({slug}) => {
   };
   const postComment = async (e) => {
     e.preventDefault()
-    const req = await fetch('/api/comment', {
+    const req = await fetch('/api/comment  ', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

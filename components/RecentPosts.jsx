@@ -26,7 +26,7 @@ const RecentPosts = ({ categories, slug }) => {
               <li key={index} className="my-2">
                 <Link
                   href={post.slug}
-                  className="flex items-center hover:bg-slate-100 hover:text-purple-500 rounded-md items-center"
+                  className="flex hover:bg-slate-100 hover:text-purple-500 rounded-md items-center"
                 >
                   <Image
                     className=" mx-2 rounded-full object-cover post-img"
