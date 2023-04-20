@@ -4,8 +4,8 @@ const Comments = ({slug}) => {
     const [comments, setComments] = useState([])
     useEffect(() => {
       getComments(slug).then(result=>setComments(result))
-    }, [])
-    console.log(comments)
+    }, [slug])
+    console.log({comments})
     return (
         <div>
             Enter

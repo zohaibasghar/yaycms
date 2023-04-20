@@ -13,13 +13,14 @@ const Header = () => {
         Yay CMS
       </Link>
       <div className="md:flex justify-evenly gap-6 hidden text-shadow">
-        {categories.map((cat) => {
-          return (
-            <Link href={`/${cat.slug}`} key={cat.slug}>
-              {cat.name}
-            </Link>
-          );
-        })}
+        {categories &&
+          categories.map((cat) => {
+            return (
+              <Link href={`/${cat.slug}`} key={cat.slug}>
+                {cat.name}
+              </Link>
+            );
+          })}
       </div>
     </div>
   );

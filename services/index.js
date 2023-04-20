@@ -32,9 +32,13 @@ export const getPosts = async () => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query);
+  try {
+    const result = await request(graphqlAPI, query);
 
-  return result.postsConnection.edges;
+    return result.postsConnection.edges;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getRecentPosts = async () => {
   const query = gql`
@@ -49,8 +53,12 @@ export const getRecentPosts = async () => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query);
-  return result.posts;
+  try {
+    const result = await request(graphqlAPI, query);
+    return result.posts;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getSimilerPosts = async () => {
@@ -63,8 +71,12 @@ export const getSimilerPosts = async () => {
   featuredImage{
   url}
    }}`;
-  const result = await request(graphqlAPI, query);
-  return result.posts;
+  try {
+    const result = await request(graphqlAPI, query);
+    return result.posts;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getCategories = async () => {
@@ -76,8 +88,12 @@ export const getCategories = async () => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query);
-  return result.categories;
+  try {
+    const result = await request(graphqlAPI, query);
+    return result.categories;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getPostDetails = async (slug) => {
@@ -109,8 +125,12 @@ export const getPostDetails = async (slug) => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query, { slug });
-  return result.post;
+  try {
+    const result = await request(graphqlAPI, query, { slug });
+    return result.post;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getComments = async (slug) => {
@@ -118,11 +138,15 @@ export const getComments = async (slug) => {
     query GetComments($slug: String!) {
       comments(where: { post: { slug: $slug } }) {
         name
-        createdAt
         comment
+        createdAt
       }
     }
   `;
-  const result = await request(graphqlAPI, query, { slug });
-  return result.comments;
+  try {
+    const result = await request(graphqlAPI, query, { slug });
+    return result.comments;
+  } catch (error) {
+    console.log(error);
+  }
 };

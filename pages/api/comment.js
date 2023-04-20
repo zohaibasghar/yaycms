@@ -1,5 +1,5 @@
 import { GraphQLClient, gql } from "graphql-request";
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHQL_API;
+const graphqlAPI = process.env.GRAPHQL_API_NOCDN;
 const cmsToken = process.env.GRAPHCMS_TOKEN;
 
 export default async function comment(req, res) {
@@ -10,26 +10,26 @@ export default async function comment(req, res) {
         authorization: `Bearer ${cmsToken}`,
       },
     });
-    try {
-      const query = gql`
-        mutation CreateComment(
-          $name: String!
-          $email: String!
-          $comment: String!
-          $slug: String!
-        ) {
-          createComment(
-            data: {
-              name: $name
-              email: $email
-              comment: $comment
-              post: { connect: { slug: $slug } }
-            }
-          ) {
-            id
+    const query = gql`
+      mutation CreateComment(
+        $name: String!
+        $email: String!
+        $comment: String!
+        $slug: String!
+      ) {
+        createComment(
+          data: {
+            name: $name
+            email: $email
+            comment: $comment
+            post: { connect: { slug: $slug } }
           }
+        ) {
+          id
         }
-      `;
+      }
+    `;
+    try {
       const result = await graphqlClient.request(query, {
         name,
         email,

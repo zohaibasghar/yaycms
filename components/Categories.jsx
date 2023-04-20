@@ -1,6 +1,7 @@
 import { getCategories } from "@/services";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,7 @@ const Categories = () => {
     <div className="p-4 mb-8 bg-slate-50 rounded-md">
       <h3 className="font-bold">Categories</h3>
       <div>
-        {categories ? (
+        {categories && categories.length>0 ? (
           <ul className="p-1">
             {categories.map((post, index) => {
               return (
@@ -28,11 +29,7 @@ const Categories = () => {
             })}
           </ul>
         ) : (
-          <div className="flex justify-center items-center h-52">
-            <div className="border-t border-x my-1 mx-2 border-gray-700 w-8 h-8 rounded-full animate-spin">
-              {" "}
-            </div>
-          </div>
+          <Loading/>
         )}
       </div>
     </div>

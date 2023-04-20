@@ -1,11 +1,13 @@
 import Author from "@/components/Author";
 import CommentForm from "@/components/CommentForm";
 import Comments from "@/components/Comments";
+import Loading from "@/components/Loading";
 import { getPostDetails, getPosts } from "@/services";
+// const {getPostDetails,getPosts}= React.lazy(()=>import('@/services'))
 import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 
 const PostDetails = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
@@ -79,13 +81,15 @@ const PostDetails = ({ post }) => {
           <title>{`${post.title} | Yay CMS`}</title>
         </Head>
         <div className="bg-slate-50 rounded-md my-4 mx-1 p-1">
-          <Image
-            src={post.featuredImage.url}
-            alt={post.title}
-            width={600}
-            height={400}
-            className="object-cover w-full rounded-md"
-          />
+          <Suspense fallback={<Loading />}>
+            <Image
+              src={post.featuredImage.url}
+              alt={post.title}
+              width={600}
+              height={400}
+              className="object-cover w-full rounded-md"
+            />
+          </Suspense>
           <div className=" flex m-2 gap-2 md:gap-6 flex-wrap ">
             <div className="flex items-center gap-2">
               <Image
@@ -130,8 +134,8 @@ const PostDetails = ({ post }) => {
         </div>
 
         <Author author={post.author} />
-        <CommentForm slug={post.slug}/>
-        <Comments slug={post.slug}/>
+        <CommentForm slug={post.slug} />
+        <Comments slug={post.slug} />
       </>
     )
   );
@@ -143,7 +147,7 @@ export async function getStaticProps({ params }) {
   };
 }
 export async function getStaticPaths() {
-  const posts = await getPosts();
+  const posts = (await getPosts()) || [];
   return {
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
     fallback: false,

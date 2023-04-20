@@ -7,7 +7,7 @@ const PostCard = ({ post }) => {
   return (
     <div className="my-4 bg-slate-50 rounded-md p- object-contain">
       <Image
-        className="mx-auto mt-1 rounded-md object-cover w-full"
+        className="mx-auto mt-1 rounded-md object-contain w-full"
         alt={post.title}
         src={post.featuredImage.url}
         width={600}

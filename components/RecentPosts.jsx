@@ -3,6 +3,7 @@ import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 const RecentPosts = ({ categories, slug }) => {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -20,7 +21,7 @@ const RecentPosts = ({ categories, slug }) => {
     <div className="p-4 bg-slate-50 my-4 rounded-md">
       <h3 className="font-bold">Recent Posts</h3>
       <div>
-        {recentPosts ? (
+        {recentPosts && recentPosts.length > 0 ? (
           <ul className="p-1">
             {recentPosts.map((post, index) => {
               return (
@@ -49,11 +50,7 @@ const RecentPosts = ({ categories, slug }) => {
             })}
           </ul>
         ) : (
-          <div className="flex justify-center items-center h-52">
-            <div className="border-t border-x my-1 mx-2 border-gray-700 w-8 h-8 rounded-full animate-spin">
-              {" "}
-            </div>
-          </div>
+          <Loading/>
         )}
       </div>
     </div>

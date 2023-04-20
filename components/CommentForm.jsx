@@ -31,7 +31,7 @@ const CommentForm = ({ slug }) => {
     });
     const res = await req.json();
     setProgress(false);
-    if (res.createComment.id) {
+    if (res.createComment?.id) {
       setCommentCred({ name: "", email: "", comment: "" });
       setRes("success");
     } else {
