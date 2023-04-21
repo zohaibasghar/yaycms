@@ -1,6 +1,6 @@
 import { getCategories } from "@/services";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Loading from "./Loading";
 
 const Categories = () => {
@@ -13,7 +13,7 @@ const Categories = () => {
     <div className="p-4 mb-8 bg-slate-50 rounded-md">
       <h3 className="font-bold">Categories</h3>
       <div>
-        {categories && categories.length>0 ? (
+        {categories && categories.length > 0 ? (
           <ul className="p-1">
             {categories.map((post, index) => {
               return (
@@ -29,7 +29,7 @@ const Categories = () => {
             })}
           </ul>
         ) : (
-          <Loading/>
+          <Loading />
         )}
       </div>
     </div>

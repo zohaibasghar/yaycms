@@ -1,9 +1,10 @@
-import Categories from "@/components/Categories";
 import Header from "@/components/Header";
-import RecentPosts from "@/components/RecentPosts";
+import Loading from "@/components/Loading";
+const RecentPosts = React.lazy(() => import("@/components/RecentPosts"));
+const Categories = React.lazy(() => import("@/components/Categories"));
 import "@/styles/globals.scss";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import LoadingBar from "react-top-loading-bar";
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(0);
@@ -34,8 +35,12 @@ export default function App({ Component, pageProps }) {
             <Component {...pageProps} />
           </div>
           <div className="md:col-1 ">
-            <RecentPosts />
-            <Categories />
+            <Suspense fallback={<Loading />}>
+              <RecentPosts />
+            </Suspense>
+            <Suspense>
+              <Categories />
+            </Suspense>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ const Comments = ({slug}) => {
     console.log({comments})
     return (
         <div>
-            Enter
+            
         </div>
     );
 }

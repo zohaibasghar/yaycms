@@ -3,7 +3,6 @@ import CommentForm from "@/components/CommentForm";
 import Comments from "@/components/Comments";
 import Loading from "@/components/Loading";
 import { getPostDetails, getPosts } from "@/services";
-// const {getPostDetails,getPosts}= React.lazy(()=>import('@/services'))
 import moment from "moment";
 import Head from "next/head";
 import Image from "next/image";
@@ -81,15 +80,13 @@ const PostDetails = ({ post }) => {
           <title>{`${post.title} | Yay CMS`}</title>
         </Head>
         <div className="bg-slate-50 rounded-md my-4 mx-1 p-1">
-          <Suspense fallback={<Loading />}>
-            <Image
-              src={post.featuredImage.url}
-              alt={post.title}
-              width={600}
-              height={400}
-              className="object-cover w-full rounded-md"
-            />
-          </Suspense>
+          <Image
+            src={post.featuredImage.url}
+            alt={post.title}
+            width={600}
+            height={400}
+            className="object-cover w-full rounded-md"
+          />
           <div className=" flex m-2 gap-2 md:gap-6 flex-wrap ">
             <div className="flex items-center gap-2">
               <Image
@@ -119,9 +116,11 @@ const PostDetails = ({ post }) => {
               <span>{moment(post.createdAt).format("DD/MM/YYYY")}</span>
             </div>
           </div>
-          <div className="p-2 text-3xl font-bold animate-bounce">
+          <div className="p-2 text-3xl font-bold">
             {post.title}
           </div>
+          
+          
           <div className="p-2">
             {post.content.raw.children.map((typeObj, index) => {
               const children = typeObj.children.map((item, itemindex) =>
